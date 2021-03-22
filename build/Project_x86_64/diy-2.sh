@@ -1,21 +1,30 @@
 #!/bin/bash
+ZZZ="package/lean/default-settings/files/zzz-default-settings"
 # Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
 #
 
-# 修改openwrt登陆地址,把下面的192.168.2.2修改成你想要的就可以了
-sed -i 's/192.168.1.1/192.168.2.2/g' package/base-files/files/bin/config_generate
+sed -i "/uci commit fstab/a\uci commit network" $ZZZ
+sed -i "/uci commit fstab/a\uci set network.lan.delegate='0'" $ZZZ
+sed -i "/uci commit fstab/a\uci set network.lan.dns='223.5.5.5 114.114.114.115'" $ZZZ
+sed -i "/uci commit fstab/a\uci set network.lan.broadcast='192.168.2.255'" $ZZZ
+sed -i "/uci commit fstab/a\uci set network.lan.gateway='192.168.2.1'" $ZZZ
+sed -i "/uci commit fstab/a\uci set network.lan.netmask='255.255.255.0'" $ZZZ
+sed -i "/uci commit fstab/a\uci set network.lan.ipaddr='192.168.2.2'" $ZZZ
 
-# 修改主机名字，把OpenWrt-123修改你喜欢的就行（不能纯数字或者使用中文）
-sed -i '/uci commit system/i\uci set system.@system[0].hostname='OpenWrt-123'' package/lean/default-settings/files/zzz-default-settings
+# 修改默认主题为argon
+sed -i "/uci commit luci/i\uci set luci.main.mediaurlbase=/luci-static/argon" $ZZZ
 
-# 修改 argon 为默认主题,可根据你喜欢的修改成其他的（不选择那些会自动改变为默认主题的主题才有效果）
-sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
+# 修改主机名称为OpenWrt-123
+sed -i "/uci commit system/i\uci set system.@system[0].hostname='OpenWrt-123'" $ZZZ
 
-# 设置密码为空（安装固件时无需密码登陆，然后自己修改想要的密码）
-sed -i 's@.*CYXluq4wUazHjmCDBCqXF*@#&@g' package/lean/default-settings/files/zzz-default-settings
+# 版本号里显示一个自己的名字（把 ${Author} 改成你自己名字就行了，不改的话，默认使用你帐号）
+sed -i "s/OpenWrt /Compiled by ${Author} on $(TZ=UTC-8 date "+%Y/%m/%d") @ OpenWrt /g" $ZZZ
 
-# 修改内核版本（版本内核默认4.19，还有4.14跟4.9内核）
-#sed -i 's/KERNEL_PATCHVER:=4.19/KERNEL_PATCHVER:=4.9/g' target/linux/x86/Makefile
+# 设置密码为空
+sed -i '/CYXluq4wUazHjmCDBCqXF/d' $ZZZ
+
+# 修改内核版本为4.9
+#sed -i 's/PATCHVER:=4.19/PATCHVER:=4.9/g' target/linux/x86/Makefile
 
 
 # 修改插件名字（修改名字后不知道会不会对插件功能有影响，自己多测试）
