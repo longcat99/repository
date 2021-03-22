@@ -2,7 +2,7 @@
 ZZZ="package/lean/default-settings/files/zzz-default-settings"
 # Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
 #
-
+sed -i "/uci commit fstab/a\uci commit network" $ZZZ
 sed -i "/uci commit fstab/a\uci set network.lan.dns='223.5.5.5 114.114.114.114'" $ZZZ
 sed -i "/uci commit fstab/a\uci set network.lan.broadcast='192.168.2.255'" $ZZZ
 sed -i "/uci commit fstab/a\uci set network.lan.gateway='192.168.2.1'" $ZZZ
