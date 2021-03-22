@@ -1,5 +1,5 @@
 #!/bin/bash
-ZZZ="package/lean/default-settings/files/zzz-default-settings"
+ZZZ="package/default-settings/files/zzz-default-settings"
 # Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
 #
 
