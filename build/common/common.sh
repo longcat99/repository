@@ -276,11 +276,11 @@ case "${REPO_URL}" in
 	if [[ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]]; then
 		sed -i "/exit 0/i\chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh" ${TYZZZ}
 		if [[ "${TARGET_ADG}" == "x86-64" ]];then
-			svn co https://github.com/281677160/Custom/branches/AdGuard/x86-64/usr/bin ${Home}/files/usr/bin
+			svn co https://github.com/danshui-git/Create/trunk/x86-64/usr/bin ${Home}/files/usr/bin
 			chmod -R 777 ${Home}/files/usr/bin/AdGuardHome
 		fi
 		if [[ "${TARGET_ADG}" =~ (friendlyarm_nanopi-r2s|friendlyarm_nanopi-r4s) ]]; then
-			svn co https://github.com/281677160/Custom/branches/AdGuard/R2S/usr/bin ${Home}/files/usr/bin
+			svn co https://github.com/danshui-git/Create/trunk/R2S/usr/bin ${Home}/files/usr/bin
 			chmod -R 777 ${Home}/files/usr/bin/AdGuardHome
 		fi
 	fi
@@ -289,11 +289,11 @@ case "${REPO_URL}" in
 	if [[ `grep -c "CONFIG_PACKAGE_luci-app-adguardhome=y" ${Home}/.config` -eq '1' ]]; then
 		sed -i "/exit 0/i\chmod -R 777 /etc/init.d/AdGuardHome /usr/share/AdGuardHome/addhost.sh" ${LIZZZ}
 		if [[ "${TARGET_ADG}" == "x86-64" ]];then
-			svn co https://github.com/281677160/Custom/branches/AdGuard/x86-64/usr/bin ${Home}/files/usr/bin
+			svn co https://github.com/danshui-git/Create/trunk/x86-64/usr/bin ${Home}/files/usr/bin
 			chmod -R 777 ${Home}/files/usr/bin/AdGuardHome
 		fi
 		if [[ "${TARGET_ADG}" =~ (friendlyarm_nanopi-r2s|friendlyarm_nanopi-r4s) ]]; then
-			svn co https://github.com/281677160/Custom/branches/AdGuard/R2S/usr/bin ${Home}/files/usr/bin
+			svn co https://github.com/danshui-git/Create/trunk/R2S/usr/bin ${Home}/files/usr/bin
 			chmod -R 777 ${Home}/files/usr/bin/AdGuardHome
 		fi
 	fi
