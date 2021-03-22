@@ -5,7 +5,7 @@ ZZZ="package/default-settings/files/zzz-default-settings"
 
 sed -i "/uci commit fstab/a\uci commit network" $ZZZ
 sed -i "/uci commit fstab/a\uci set network.lan.delegate='0'" $ZZZ
-sed -i "/uci commit fstab/a\uci set network.lan.dns='223.5.5.5 114.114.114.115'" $ZZZ
+sed -i "/uci commit fstab/a\uci set network.lan.dns='223.5.5.5 114.114.114.114'" $ZZZ
 sed -i "/uci commit fstab/a\uci set network.lan.broadcast='192.168.2.255'" $ZZZ
 sed -i "/uci commit fstab/a\uci set network.lan.gateway='192.168.2.1'" $ZZZ
 sed -i "/uci commit fstab/a\uci set network.lan.netmask='255.255.255.0'" $ZZZ
