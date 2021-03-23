@@ -26,6 +26,8 @@ env:
   Author: ${{github.actor}}
   Run_number: ${{github.run_number}}
   Run_workflow: ${{github.workflow}}
+  TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
   TZ: Asia/Shanghai
 
 jobs:
@@ -154,9 +156,6 @@ jobs:
     - name: SSH远程连接（若打开了此功能,在此转圈2分钟还展开不了,请看《SSH连接教程》）
       uses: garypang13/debugger-action@master
       if: env.SSH_ACTIONS == 'true' || (github.event.inputs.ssh == 'ssh' && github.event.inputs.ssh  != 'false')
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
     
     - name: 为编译做最后处理
       run: |
