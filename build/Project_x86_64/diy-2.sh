@@ -11,18 +11,14 @@ sed -i "/uci commit network/i\uci set network.lan.broadcast='192.168.2.255'" $ZZ
 sed -i "/uci commit network/i\uci set network.lan.dns='223.5.5.5 114.114.114.114'" $ZZZ   # DNS(多个DNS要用空格分开)
 sed -i "/uci commit network/i\uci set network.lan.delegate='0'" $ZZZ                      # 去掉LAN口使用内置的 IPv6 管理
 
-# 修改默认主题为argon
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile   # 强制选择argon为默认主题选项
 sed -i "/uci commit luci/i\uci set luci.main.mediaurlbase=/luci-static/argon" $ZZZ        # 选择argon为默认主题
 
-# 修改主机名称为OpenWrt-123
-sed -i "/uci commit system/i\uci set system.@system[0].hostname='OpenWrt-123'" $ZZZ
+sed -i "/uci commit system/i\uci set system.@system[0].hostname='OpenWrt-123'" $ZZZ       # 修改主机名称为OpenWrt-123
 
-# 设置密码为空
-sed -i '/CYXluq4wUazHjmCDBCqXF/d' $ZZZ
+sed -i '/CYXluq4wUazHjmCDBCqXF/d' $ZZZ                                                    # 设置密码为空
 
-# 修改内核版本为4.9
-#sed -i 's/PATCHVER:=4.19/PATCHVER:=4.9/g' target/linux/x86/Makefile
+#sed -i 's/PATCHVER:=4.19/PATCHVER:=4.9/g' target/linux/x86/Makefile                      # 修改内核版本为4.9
 
 
 # 修改插件名字（修改名字后不知道会不会对插件功能有影响，自己多测试）
