@@ -120,8 +120,8 @@ Diy_immortalwrt2() {
 DIY_GET_COMMON_SH
 cp -Rf "${Home}"/build/common/PROJECT/files "${Home}"
 cp -Rf "${Home}"/build/common/PROJECT/diy/* "${Home}"
-mv package/danshui/luci-app-adguardhome feeds/luci/applications
-mv package/danshui/luci-app-argon-config feeds/luci/applications
+rm -rf feeds/luci/applications/luci-app-adguardhome
+rm -rf feeds/luci/applications/luci-app-argon-config
 sed -i '/exit 0/i\echo "*/3 * * * * chmod +x /etc/webweb.sh && source /etc/webweb.sh" >> /etc/crontabs/root' ${TYZZZ}
 sed -i "/exit 0/i\sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release" ${TYZZZ}
 if [[ `grep -c "0.105.1" ${Home}/feeds/packages/net/adguardhome/Makefile` -eq '1' ]]; then
